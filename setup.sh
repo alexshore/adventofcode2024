@@ -11,4 +11,4 @@ cp -r template day$DAY
 
 sed -i "s/DAY/$DAY/g" day$DAY/Cargo.toml
 
-curl --cookie "session=$AOC_COOKIE" https://adventofcode.com/2024/day/$1/input > day$DAY/src/bin/input.txt
+curl --cookie "session=$AOC_COOKIE" https://adventofcode.com/2024/day/$1/input > day$DAY/input.txt

@@ -1,5 +1,5 @@
 fn main() {
-    let input = include_str!("input.txt").trim_end();
+    let input = include_str!("../input.txt").trim_end();
     println!("{}", part_one(input));
     println!("{}", part_two(input))
 }
