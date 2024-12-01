@@ -7,11 +7,13 @@ fn main() {
 fn parse_input(input: &str) -> (Vec<u32>, Vec<u32>) {
     let mut a = Vec::new();
     let mut b = Vec::new();
+
     input.lines().for_each(|line| {
         let mut split_line = line.split_whitespace();
         a.push(split_line.next().unwrap().parse::<u32>().unwrap());
         b.push(split_line.next().unwrap().parse::<u32>().unwrap());
     });
+
     (a, b)
 }
 
