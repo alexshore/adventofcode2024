@@ -24,11 +24,14 @@ enum ReportState {
 fn is_report_safe(report: &[i32]) -> bool {
     let mut state = ReportState::Unknown;
     for i in 0..report.len() - 1 {
+        // just check if the diff is within the allowed range
         match i32::abs_diff(report[i], report[i + 1]) {
             1..=3 => (),
             _ => return false,
         }
 
+        // can't fail on the first two items in the report, we just find out whether its increasing or decreasing.
+        // on 2-3, 3-4, 4-5, etc. we check behaviour compared to the expected behaviour and fail if bad
         match &state {
             ReportState::Unknown if report[i] < report[i + 1] => state = ReportState::Increasing,
             ReportState::Unknown if report[i] > report[i + 1] => state = ReportState::Decreasing,
@@ -63,8 +66,10 @@ fn part_two(input: &str) -> usize {
                         return true;
                     }
                 }
+                // we haven't found a safe configuration so filter it out
                 return false;
             }
+            // report is safe by default :)
             true
         })
         .count()
