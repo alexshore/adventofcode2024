@@ -30,7 +30,7 @@ fn part_two(input: &str) -> u32 {
         "don't()" => state = State::Disabled,
         operation => {
             if state == State::Enabled {
-                let (_, [a, b]) = nums.captures(&operation).unwrap().extract();
+                let (_, [a, b]) = nums.captures(operation).unwrap().extract();
                 res += a.parse::<u32>().unwrap() * b.parse::<u32>().unwrap()
             }
         }
