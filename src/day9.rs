@@ -25,7 +25,7 @@ fn parse_input(input: &str) -> Vec<Int> {
 }
 
 #[aoc(day9, part1)]
-fn part_one(input: &Vec<Int>) -> Int {
+fn part_one(input: &[Int]) -> Int {
     let mut res = 0;
 
     let mut i: usize = 0;
@@ -54,6 +54,6 @@ fn part_one(input: &Vec<Int>) -> Int {
 }
 
 #[aoc(day9, part2)]
-fn part_two(input: &Vec<Int>) -> Int {
+fn part_two(input: &[Int]) -> Int {
     0
 }

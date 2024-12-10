@@ -19,7 +19,7 @@ fn parse_input(input: &str) -> ParsedInput {
     let mut rules: Rules = HashMap::new();
 
     for l in rules_input.lines() {
-        let (key, val) = l.split_once("|").unwrap();
+        let (key, val) = l.split_once('|').unwrap();
 
         rules
             .entry(key.parse().unwrap())
@@ -58,7 +58,7 @@ fn part_one(input: &ParsedInput) -> Int {
     let mut res = 0;
 
     for book in books.iter() {
-        if is_valid_book(&rules, book) {
+        if is_valid_book(rules, book) {
             res += book[book.len() / 2]
         }
     }
