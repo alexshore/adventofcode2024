@@ -67,17 +67,6 @@ fn parse_input_one(input: &str) -> Vec<Machine> {
         .collect()
 }
 
-#[aoc(day13, part1)]
-fn part_one(input: &Vec<Machine>) -> Int {
-    input
-        .iter()
-        .map(|machine| match machine.solve() {
-            Some(x) => x,
-            None => 0,
-        })
-        .sum()
-}
-
 #[aoc_generator(day13, part2)]
 fn parse_input_two(input: &str) -> Vec<Machine> {
     let re = Regex::new(
@@ -106,8 +95,9 @@ fn parse_input_two(input: &str) -> Vec<Machine> {
         .collect()
 }
 
+#[aoc(day13, part1)]
 #[aoc(day13, part2)]
-fn part_two(input: &Vec<Machine>) -> Int {
+fn part_one_and_two(input: &Vec<Machine>) -> Int {
     input.iter().filter_map(|machine| machine.solve()).sum()
 }
 
@@ -133,11 +123,11 @@ Prize: X=18641, Y=10279";
 
     #[test]
     fn test_part_one() {
-        assert_eq!(part_one(&parse_input_one(INPUT)), 480)
+        assert_eq!(part_one_and_two(&parse_input_one(INPUT)), 480)
     }
 
     #[test]
     fn test_part_two() {
-        assert_eq!(part_two(&parse_input_two(INPUT)), 875318608908)
+        assert_eq!(part_one_and_two(&parse_input_two(INPUT)), 875318608908)
     }
 }
