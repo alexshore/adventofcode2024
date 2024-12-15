@@ -39,8 +39,8 @@ impl Machine {
     }
 }
 
-#[aoc_generator(day13)]
-fn parse_input(input: &str) -> Vec<Machine> {
+#[aoc_generator(day13, part1)]
+fn parse_input_one(input: &str) -> Vec<Machine> {
     let re = Regex::new(
         r"Button A: X\+(\d+), Y\+(\d+)\nButton B: X\+(\d+), Y\+(\d+)\nPrize: X=(\d+), Y=(\d+)",
     )
@@ -78,6 +78,39 @@ fn part_one(input: &Vec<Machine>) -> Int {
         .sum()
 }
 
+#[aoc_generator(day13, part2)]
+fn parse_input_two(input: &str) -> Vec<Machine> {
+    let re = Regex::new(
+        r"Button A: X\+(\d+), Y\+(\d+)\nButton B: X\+(\d+), Y\+(\d+)\nPrize: X=(\d+), Y=(\d+)",
+    )
+    .unwrap();
+
+    input
+        .split("\n\n")
+        .map(|machine| {
+            let caps = re.captures(machine).unwrap();
+
+            Machine {
+                x_eq: Equation {
+                    a: caps[1].parse().unwrap(),
+                    b: caps[3].parse().unwrap(),
+                    goal: caps[5].parse::<Int>().unwrap() + 10000000000000,
+                },
+                y_eq: Equation {
+                    a: caps[2].parse().unwrap(),
+                    b: caps[4].parse().unwrap(),
+                    goal: caps[6].parse::<Int>().unwrap() + 10000000000000,
+                },
+            }
+        })
+        .collect()
+}
+
+#[aoc(day13, part2)]
+fn part_two(input: &Vec<Machine>) -> Int {
+    input.iter().filter_map(|machine| machine.solve()).sum()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -100,6 +133,11 @@ Prize: X=18641, Y=10279";
 
     #[test]
     fn test_part_one() {
-        assert_eq!(part_one(&parse_input(INPUT)), 480)
+        assert_eq!(part_one(&parse_input_one(INPUT)), 480)
+    }
+
+    #[test]
+    fn test_part_two() {
+        assert_eq!(part_two(&parse_input_two(INPUT)), 875318608908)
     }
 }
