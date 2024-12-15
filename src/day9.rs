@@ -53,7 +53,7 @@ fn part_one(input: &[Int]) -> Int {
     res
 }
 
-#[aoc(day9, part2)]
-fn part_two(input: &[Int]) -> Int {
-    0
-}
+// #[aoc(day9, part2)]
+// fn part_two(input: &[Int]) -> Int {
+//     0
+// }

@@ -75,24 +75,24 @@ fn part_one(grid: &Grid) -> Int {
     res
 }
 
-fn is_valid_x_mas(grid: &Grid, i: Int, j: Int) -> bool {
-    true
-}
+// fn is_valid_x_mas(grid: &Grid, i: Int, j: Int) -> bool {
+//     true
+// }
 
-#[aoc(day4, part2)]
-fn part_two(grid: &Grid) -> Int {
-    let mut res = 0;
+// #[aoc(day4, part2)]
+// fn part_two(grid: &Grid) -> Int {
+//     let mut res = 0;
 
-    for (i, line) in grid.iter().enumerate() {
-        for (j, c) in line.iter().enumerate() {
-            if *c == 'A' && is_valid_x_mas(grid, i, j) {
-                res += 1
-            }
-        }
-    }
+//     for (i, line) in grid.iter().enumerate() {
+//         for (j, c) in line.iter().enumerate() {
+//             if *c == 'A' && is_valid_x_mas(grid, i, j) {
+//                 res += 1
+//             }
+//         }
+//     }
 
-    res
-}
+//     res
+// }
 
 #[cfg(test)]
 mod tests {
@@ -114,8 +114,8 @@ MXMXAXMASX";
         assert_eq!(part_one(&parse_input(INPUT)), 18)
     }
 
-    #[test]
-    fn test_two() {
-        assert_eq!(part_two(&parse_input(INPUT)), 9)
-    }
+    // #[test]
+    // fn test_two() {
+    //     assert_eq!(part_two(&parse_input(INPUT)), 9)
+    // }
 }
